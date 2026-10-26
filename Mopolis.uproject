@@ -1,0 +1,22 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{6EC83E08-4C58-F4B5-4778-B790688F3E2A}",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "Mopolis",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "ModelingToolsEditorMode",
+			"Enabled": true,
+			"TargetAllowList": [
+				"Editor"
+			]
+		}
+	]
+}
