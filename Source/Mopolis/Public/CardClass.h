@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "CardClass.generated.h"
 
+// struct for each individual card
 USTRUCT(BlueprintType)
 struct MOPOLIS_API FCardData
 {
@@ -26,6 +27,7 @@ struct MOPOLIS_API FCardData
 	int32 ID = 0;
 };
 
+// struct for a list of cards
 USTRUCT(BlueprintType)
 struct MOPOLIS_API FCardList
 {
@@ -35,7 +37,28 @@ struct MOPOLIS_API FCardList
 	TArray<FCardData> Cards;
 };
 
-class MOPOLIS_API FCardJson
+USTRUCT(BlueprintType)
+struct MOPOLIS_API FDeck
+{
+	GENERATED_BODY()
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FString Name;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<int32> CardFreqArray;
+};
+
+USTRUCT(BlueprintType)
+struct MOPOLIS_API FDeckList
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<FDeck> Decks;
+};
+
+class MOPOLIS_API FCardClass
 {
 public:
 	static bool LoadFromJson(const FString& JsonString, FCardList& OutCardList);

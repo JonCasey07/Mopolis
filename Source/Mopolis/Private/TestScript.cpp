@@ -24,12 +24,12 @@ void ATestScript::BeginPlay()
 	const bool bReadFile = FFileHelper::LoadFileToString(CardsJson, *CardsJsonPath);
 
 	FCardList LoadedCardList;
-	const bool bLoaded = bReadFile && FCardJson::LoadFromJson(CardsJson, LoadedCardList);
+	const bool bLoaded = bReadFile && FCardClass::LoadFromJson(CardsJson, LoadedCardList);
 	const bool bValidResult =
 		bLoaded &&
 		LoadedCardList.Cards.Num() > 0 &&
 		LoadedCardList.Cards[0].Name == TEXT("Vegeta") &&
-		LoadedCardList.Cards[0].ID == 1;
+		LoadedCardList.Cards[0].ID == 0;
 
 	if (bValidResult)
 	{

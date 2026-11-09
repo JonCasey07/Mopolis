@@ -4,7 +4,7 @@
 #include "CardClass.h"
 #include "JsonObjectConverter.h"
 
-bool FCardJson::LoadFromJson(
+bool FCardClass::LoadFromJson(
 	const FString& JsonString,
 	FCardList& OutCardList)
 {
