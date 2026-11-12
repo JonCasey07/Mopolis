@@ -20,13 +20,13 @@ class MOPOLIS_API UMopolisGameInstance : public UGameInstance
 	// Standard lifecycle override
 	virtual void Init() override;
 	
-	void InitializeCardList(FCardList& OutCardList);
+	void InitializeCardList (FCardList& OutCardList) const;
 	
-	// Persistent data exposed to Blueprints
+	// Persistent global data 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Card Data")
-	FCardList CardList;
+	FCardList GlobalCardList;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player Data")
-	FDeckList DeckList;
+	FDeckList GlobalDeckList;
 	
 };

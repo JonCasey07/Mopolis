@@ -7,31 +7,28 @@ void UMopolisGameInstance::Init()
 {
 	Super::Init();
 	
-	FCardList GlobalCardList;
+	// initializes GlobalCardList declared in header file
 	InitializeCardList(GlobalCardList);
-	
-	
 	
 }
 
-void InitializeCardList(FCardList& OutCardList)
+void UMopolisGameInstance::InitializeCardList (FCardList& OutCardList) const
 {
 	const FString CardsJsonPath = FPaths::Combine(FPaths::ProjectContentDir(), TEXT("Data/cards.json"));
 	FString CardsJson;
 	const bool bReadFile = FFileHelper::LoadFileToString(CardsJson, *CardsJsonPath);
 
-	FCardList LoadedCardList;
-	const bool bLoaded = bReadFile && FCardClass::LoadFromJson(CardsJson, LoadedCardList);
+	const bool bLoaded = bReadFile && FCardClass::LoadFromJson(CardsJson, OutCardList);
 	const bool bValidResult =
 		bLoaded &&
-		LoadedCardList.Cards.Num() > 0 &&
-		LoadedCardList.Cards[0].Name == TEXT("Vegeta") &&
-		LoadedCardList.Cards[0].ID == 0;
+		OutCardList.Cards.Num() > 0 &&
+		OutCardList.Cards[0].Name == TEXT("Vegeta") &&
+		OutCardList.Cards[0].ID == 0;
 
 	if (bValidResult)
 	{
 		UE_LOG(LogTemp, Log, TEXT("Card JSON load test passed. Loaded %d cards from %s."),
-			LoadedCardList.Cards.Num(),
+			OutCardList.Cards.Num(),
 			*CardsJsonPath);
 	}
 
